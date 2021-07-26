@@ -10,11 +10,12 @@ import Foundation
 var isShouldClose = false
 var arguments: Array<Double> = [1, 2, 3]
 var readedLine: String?
+var isCorrectNum = false
 
 while !isShouldClose {
     
     start()
-    isShouldClose = true
+    isWantToExit()
 }
 
 func start() {
@@ -73,5 +74,25 @@ func calcDiscriminant(args: Array<Double>) {
     } else if discriminant > 0 {
         print("x1 = \((-args[1] + sqrtDiscriminant) / (2 * args[0]))")
         print("x2 = \((-args[1] - sqrtDiscriminant) / (2 * args[0]))")
+    }
+}
+
+func isWantToExit() {
+    isCorrectNum = false
+    print("Do you want to exit? 1 - Yes, 0 - No.")
+    
+    while !isCorrectNum {
+        readedLine = readLine()
+        
+        if readedLine == "1" {
+            isShouldClose = true
+            isCorrectNum = true
+
+        } else if readedLine == "0" {
+            isShouldClose = false
+            isCorrectNum = true
+        } else {
+            print("Uncorrect value!")
+        }
     }
 }
